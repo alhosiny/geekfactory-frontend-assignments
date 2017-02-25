@@ -1,0 +1,20 @@
+document.getElementById("form").addEventListener("submit", function (event) {
+    event.preventDefault();
+    var taskManager = createTaskManager();
+    var category = document.getElementsByName("category")[0].value;
+    console.log(category);
+    var title = document.getElementsByName("Title")[0].value;
+    var periorty = document.getElementsByName("periorty")[0].value;
+    var estimate = document.getElementsByName("Estimate")[0].value;
+    var task = taskManager.create(category, title, periorty, estimate);
+    var Tasks_table = document.getElementById("Tasks_table");
+    var row = Tasks_table.insertRow(Tasks_table.length);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    cell1.innerHTML = task.category;
+    cell2.innerHTML = task.title;
+    cell3.innerHTML = task.priority;
+    cell4.innerHTML = task.estimate;
+});
